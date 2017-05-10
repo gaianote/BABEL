@@ -26,10 +26,11 @@ module.exports = {
     },
     //新建bilibili账号
     'POST /api/bilibili': async (ctx, next) => {
-        data = ctx.request.body
-        console.log(data)
-        user = await Bilibili.create(data)
-        console.log(user.get({'plain': true}));
+        bilibili = ctx.request.body.bilibili
+        bilibili = await Bilibili.create(bilibili)
+        ctx.rest({
+            'bilibili': bilibili.get({'plain': true})
+        });
     },
     //更新bilibili账号
     'PUT /api/bilibili': async (ctx, next) => {
@@ -63,10 +64,11 @@ module.exports = {
     },
     //新建bilan账号
     'POST /api/bilan': async (ctx, next) => {
-        data = ctx.request.body
-        console.log(data)
-        bilan = await Bilan.create(data)
-        console.log(bilan.get({'plain': true}));
+        bilan = ctx.request.body.bilan
+        bilan = await Bilan.create(bilan)
+        ctx.rest({
+            'bilan': bilan.get({'plain': true})
+        });
     },
     //更新bilan账号 'isused': true
     'PUT /api/bilan': async (ctx, next) => {

@@ -17,7 +17,6 @@ app.use(async (ctx, next) => {
     console.log(`Process ${ctx.request.method} ${ctx.request.url}...`);
     await next();
 });
-
 // static server:
 app.use(serve(__dirname + '/static'));
 
@@ -36,5 +35,5 @@ app.use(rest.restify());
 // add controllers:
 app.use(controller());
 
-app.listen(3000);
+app.listen(3000, '0.0.0.0');
 console.log('app started at port 3000...');
